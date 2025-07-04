@@ -41,13 +41,17 @@ function ServiceVisitsTable({ visits, onEdit, onDelete, sx }) {
                   )
                 ) : null}
               </TableCell>
-              <TableCell>
-                <IconButton onClick={() => onEdit(visit)} aria-label="edit" size="small">
-                  <EditIcon fontSize="inherit" />
-                </IconButton>
-                <IconButton onClick={() => onDelete(visit.id)} aria-label="delete" size="small">
-                  <DeleteIcon fontSize="inherit" />
-                </IconButton>
+              <TableCell sx={{ color: 'inherit' }}>
+                {onEdit && (
+                  <IconButton onClick={() => onEdit(visit)} aria-label="edit" size="small">
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
+                )}
+                {onDelete && (
+                  <IconButton onClick={() => onDelete(visit.id)} aria-label="delete" size="small">
+                    <DeleteIcon fontSize="inherit" />
+                  </IconButton>
+                )}
               </TableCell>
             </TableRow>
           ))}

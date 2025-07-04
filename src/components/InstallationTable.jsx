@@ -41,13 +41,17 @@ function InstallationsTable({ installations, onEdit, onDelete, sx }) {
                   <Avatar variant="rounded" src={inst.photoUrl} alt="Unboxing" sx={{ width: 48, height: 48 }} />
                 ) : null}
               </TableCell>
-              <TableCell>
-                <IconButton onClick={() => onEdit(inst)} aria-label="edit" size="small">
-                  <EditIcon fontSize="inherit" />
-                </IconButton>
-                <IconButton onClick={() => onDelete(inst.id)} aria-label="delete" size="small">
-                  <DeleteIcon fontSize="inherit" />
-                </IconButton>
+              <TableCell sx={{ color: 'inherit' }}>
+                {onEdit && (
+                  <IconButton onClick={() => onEdit(inst)} aria-label="edit" size="small">
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
+                )}
+                {onDelete && (
+                  <IconButton onClick={() => onDelete(inst.id)} aria-label="delete" size="small">
+                    <DeleteIcon fontSize="inherit" />
+                  </IconButton>
+                )}
               </TableCell>
             </TableRow>
           ))}

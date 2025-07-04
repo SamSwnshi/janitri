@@ -63,7 +63,7 @@ function AMCTracker({ role }) {
         contracts={contracts}
         onEdit={role === 'Admin' ? handleEdit : undefined}
         onDelete={role === 'Admin' ? handleDelete : undefined}
-        sx={{ overflowX: 'auto' }}
+        sx={{ overflowX: 'auto', color: 'inherit' }}
       />
       {role === 'Admin' && (
         <AMCContractForm

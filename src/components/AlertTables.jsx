@@ -23,30 +23,34 @@ function AlertsTable({ alerts, onEdit, onDelete, sx }) {
         <TableHead>
           <TableRow>
             {columns.map((col) => (
-              <TableCell key={col.id}>{col.label}</TableCell>
+              <TableCell key={col.id} sx={{ color: 'inherit' }}>{col.label}</TableCell>
             ))}
-            <TableCell>Actions</TableCell>
+            <TableCell sx={{ color: 'inherit' }}>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {alerts.map((alert) => (
             <TableRow key={alert.id} style={getRowStyle(alert.status)}>
-              <TableCell>{alert.deviceId}</TableCell>
-              <TableCell>{alert.date}</TableCell>
-              <TableCell>{alert.description}</TableCell>
-              <TableCell>
+              <TableCell sx={{ color: 'inherit' }}>{alert.deviceId}</TableCell>
+              <TableCell sx={{ color: 'inherit' }}>{alert.date}</TableCell>
+              <TableCell sx={{ color: 'inherit' }}>{alert.description}</TableCell>
+              <TableCell sx={{ color: 'inherit' }}>
                 {alert.photoUrl ? (
                   <Avatar variant="rounded" src={alert.photoUrl} alt="Alert Photo" sx={{ width: 48, height: 48 }} />
                 ) : null}
               </TableCell>
-              <TableCell>{alert.status}</TableCell>
-              <TableCell>
-                <IconButton onClick={() => onEdit(alert)} aria-label="edit" size="small">
-                  <EditIcon fontSize="inherit" />
-                </IconButton>
-                <IconButton onClick={() => onDelete(alert.id)} aria-label="delete" size="small">
-                  <DeleteIcon fontSize="inherit" />
-                </IconButton>
+              <TableCell sx={{ color: 'inherit' }}>{alert.status}</TableCell>
+              <TableCell sx={{ color: 'inherit' }}>
+                {onEdit && (
+                  <IconButton onClick={() => onEdit(alert)} aria-label="edit" size="small">
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
+                )}
+                {onDelete && (
+                  <IconButton onClick={() => onDelete(alert.id)} aria-label="delete" size="small">
+                    <DeleteIcon fontSize="inherit" />
+                  </IconButton>
+                )}
               </TableCell>
             </TableRow>
           ))}

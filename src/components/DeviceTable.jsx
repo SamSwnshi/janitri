@@ -35,13 +35,17 @@ function DeviceTable({ devices, onEdit, onDelete }) {
               <TableCell>{device.battery}</TableCell>
               <TableCell>{device.lastService}</TableCell>
               <TableCell>{device.amcStatus}</TableCell>
-              <TableCell>
-                <IconButton onClick={() => onEdit(device)} aria-label="edit" size="small">
-                  <EditIcon fontSize="inherit" />
-                </IconButton>
-                <IconButton onClick={() => onDelete(device.id)} aria-label="delete" size="small">
-                  <DeleteIcon fontSize="inherit" />
-                </IconButton>
+              <TableCell sx={{ color: 'inherit' }}>
+                {onEdit && (
+                  <IconButton onClick={() => onEdit(device)} aria-label="edit" size="small">
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
+                )}
+                {onDelete && (
+                  <IconButton onClick={() => onDelete(device.id)} aria-label="delete" size="small">
+                    <DeleteIcon fontSize="inherit" />
+                  </IconButton>
+                )}
               </TableCell>
             </TableRow>
           ))}
