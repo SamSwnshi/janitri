@@ -14,9 +14,9 @@ const columns = [
   { id: 'photo', label: 'Photo' },
 ];
 
-function InstallationsTable({ installations, onEdit, onDelete }) {
+function InstallationsTable({ installations, onEdit, onDelete, sx }) {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ overflowX: 'auto', ...sx }}>
       <Table>
         <TableHead>
           <TableRow>

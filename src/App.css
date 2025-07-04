@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+    padding: 0;
+  }
+  .MuiToolbar-root {
+    min-height: 48px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}

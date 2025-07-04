@@ -44,10 +44,10 @@ function Installations({ role }) {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-        <h2>Installations & Training Module</h2>
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, mb: 2, gap: { xs: 1, sm: 0 } }}>
+        <h2 style={{ fontSize: '1.2rem', margin: 0 }}>Installations & Training Module</h2>
         {role === 'Admin' && (
-          <Button variant="contained" color="primary" onClick={handleAdd}>
+          <Button variant="contained" color="primary" onClick={handleAdd} sx={{ fontSize: { xs: '0.9rem', sm: '1rem' }, width: { xs: '100%', sm: 'auto' } }}>
             Add Installation
           </Button>
         )}
@@ -61,6 +61,7 @@ function Installations({ role }) {
         installations={installations}
         onEdit={role === 'Admin' ? handleEdit : undefined}
         onDelete={role === 'Admin' ? handleDelete : undefined}
+        sx={{ overflowX: 'auto' }}
       />
       {role === 'Admin' && (
         <InstallationForm

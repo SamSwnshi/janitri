@@ -16,9 +16,9 @@ function getRowStyle(status) {
   return {};
 }
 
-function AlertsTable({ alerts, onEdit, onDelete }) {
+function AlertsTable({ alerts, onEdit, onDelete, sx }) {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ overflowX: 'auto', ...sx }}>
       <Table>
         <TableHead>
           <TableRow>

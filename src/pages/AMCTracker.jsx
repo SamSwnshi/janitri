@@ -5,23 +5,6 @@ import AMCContractsTable from '../components/AMCContractTable';
 import AMCContractForm from '../components/AMCContractForm';
 import { Button, Box, Alert } from '@mui/material';
 
-function exportToCSV(contracts) {
-  const headers = ['Device ID', 'Contract Type', 'Start Date', 'End Date', 'Status', 'Notes'];
-  const rows = contracts.map(c => [c.deviceId, c.contractType, c.startDate, c.endDate, c.status, c.notes]);
-  let csvContent = '';
-  csvContent += headers.join(',') + '\n';
-  rows.forEach(row => {
-    csvContent += row.map(val => '"' + (val || '') + '"').join(',') + '\n';
-  });
-  const blob = new Blob([csvContent], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'amc_cmc_contracts.csv';
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
 function AMCTracker({ role }) {
   const contracts = useSelector((state) => state.contracts.contracts);
   const dispatch = useDispatch();
@@ -61,17 +44,14 @@ function AMCTracker({ role }) {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-        <h2>AMC/CMC Tracker</h2>
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, mb: 2, gap: { xs: 1, sm: 0 } }}>
+        <h2 style={{ fontSize: '1.2rem', margin: 0 }}>AMC/CMC Tracker</h2>
         <Box>
           {role === 'Admin' && (
-            <Button variant="contained" color="primary" onClick={handleAdd} sx={{ mr: 2 }}>
+            <Button variant="contained" color="primary" onClick={handleAdd} sx={{ fontSize: { xs: '0.9rem', sm: '1rem' }, width: { xs: '100%', sm: 'auto' }, mb: { xs: 1, sm: 0 } }}>
               Add Contract
             </Button>
           )}
-          <Button variant="outlined" color="secondary" onClick={() => exportToCSV(contracts)}>
-            Export to CSV
-          </Button>
         </Box>
       </Box>
       {role !== 'Admin' && (
@@ -83,6 +63,7 @@ function AMCTracker({ role }) {
         contracts={contracts}
         onEdit={role === 'Admin' ? handleEdit : undefined}
         onDelete={role === 'Admin' ? handleDelete : undefined}
+        sx={{ overflowX: 'auto' }}
       />
       {role === 'Admin' && (
         <AMCContractForm

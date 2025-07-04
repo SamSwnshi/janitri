@@ -12,9 +12,9 @@ const columns = [
   { id: 'attachment', label: 'Attachment' },
 ];
 
-function ServiceVisitsTable({ visits, onEdit, onDelete }) {
+function ServiceVisitsTable({ visits, onEdit, onDelete, sx }) {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ overflowX: 'auto', ...sx }}>
       <Table>
         <TableHead>
           <TableRow>

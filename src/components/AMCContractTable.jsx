@@ -18,9 +18,9 @@ function getRowStyle(status) {
   return {};
 }
 
-function AMCContractsTable({ contracts, onEdit, onDelete }) {
+function AMCContractTable({ contracts, onEdit, onDelete, sx }) {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ overflowX: 'auto', ...sx }}>
       <Table>
         <TableHead>
           <TableRow>
@@ -55,4 +55,4 @@ function AMCContractsTable({ contracts, onEdit, onDelete }) {
   );
 }
 
-export default AMCContractsTable; 
+export default AMCContractTable; 

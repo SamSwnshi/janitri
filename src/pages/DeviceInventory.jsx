@@ -3,17 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addDevice, updateDevice, removeDevice } from '../redux/slices/devicesSlice';
 import DeviceTable from '../components/DeviceTable';
 import DeviceForm from '../components/DeviceForm';
-import { Button, Box, Alert, Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
-import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
-import { QrReader } from 'react-qr-reader';
+import { Button, Box, Alert } from '@mui/material';
 
 function DeviceInventory({ role }) {
   const devices = useSelector((state) => state.devices.devices);
   const dispatch = useDispatch();
   const [formOpen, setFormOpen] = useState(false);
   const [editDevice, setEditDevice] = useState(null);
-  const [qrDialogOpen, setQrDialogOpen] = useState(false);
-  const [scannedDeviceId, setScannedDeviceId] = useState('');
 
   const handleAdd = (deviceId) => {
     setEditDevice(deviceId ? { id: deviceId } : null);
@@ -34,7 +30,6 @@ function DeviceInventory({ role }) {
   const handleFormClose = () => {
     setFormOpen(false);
     setEditDevice(null);
-    setScannedDeviceId('');
   };
 
   const handleFormSubmit = (device) => {
@@ -51,34 +46,18 @@ function DeviceInventory({ role }) {
     }
     setFormOpen(false);
     setEditDevice(null);
-    setScannedDeviceId('');
-  };
-
-  const handleScanQR = () => {
-    setQrDialogOpen(true);
-  };
-
-  const handleQRResult = (result, error) => {
-    if (!!result) {
-      setQrDialogOpen(false);
-      setScannedDeviceId(result?.text || '');
-      setTimeout(() => handleAdd(result?.text || ''), 300);
-    }
   };
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-        <h2>Device Inventory Dashboard</h2>
-        <Box display="flex" gap={2}>
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, mb: 2, gap: { xs: 1, sm: 0 } }}>
+        <h2 style={{ fontSize: '1.2rem', margin: 0 }}>Device Inventory Dashboard</h2>
+        <Box display="flex" gap={2} sx={{ width: { xs: '100%', sm: 'auto' }, justifyContent: { xs: 'flex-end', sm: 'flex-start' } }}>
           {role === 'Admin' && (
-            <Button variant="contained" color="primary" onClick={() => handleAdd()}>
+            <Button variant="contained" color="primary" onClick={() => handleAdd()} sx={{ fontSize: { xs: '0.9rem', sm: '1rem' }, width: { xs: '100%', sm: 'auto' } }}>
               Add Device
             </Button>
           )}
-          <IconButton color="primary" onClick={handleScanQR} title="Scan Device QR Code">
-            <QrCodeScannerIcon />
-          </IconButton>
         </Box>
       </Box>
       {role !== 'Admin' && (
@@ -90,24 +69,14 @@ function DeviceInventory({ role }) {
         devices={devices}
         onEdit={role === 'Admin' ? handleEdit : undefined}
         onDelete={role === 'Admin' ? handleDelete : undefined}
+        sx={{ overflowX: 'auto' }}
       />
       <DeviceForm
         open={formOpen}
         onClose={handleFormClose}
         onSubmit={handleFormSubmit}
         initialValues={editDevice}
-        scannedDeviceId={scannedDeviceId}
       />
-      <Dialog open={qrDialogOpen} onClose={() => setQrDialogOpen(false)} maxWidth="xs" fullWidth>
-        <DialogTitle>Scan Device QR Code</DialogTitle>
-        <DialogContent>
-          <QrReader
-            constraints={{ facingMode: 'environment' }}
-            onResult={handleQRResult}
-            style={{ width: '100%' }}
-          />
-        </DialogContent>
-      </Dialog>
     </Box>
   );
 }
