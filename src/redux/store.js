@@ -1,7 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import devicesReducer from './slices/devicesSlice'
+import devicesReducer from './slices/devicesSlice';
+import facilitiesReducer from './slices/facilitiesSlice';
+import visitsReducer from './slices/visitsSlice';
+import contractsReducer from './slices/contractsSlice';
+import alertsReducer from './slices/alertsSlice';
+import installationsReducer from './slices/installationsSlice';
 const PERSISTED_KEYS = [
     'devices',
+  'facilities',
+  'visits',
+  'contracts',
+  'alerts',
+  'installations',
 ]
 
 function loadState() {
@@ -30,12 +40,11 @@ function saveState(state) {
 const store = configureStore({
   reducer: {
     devices: devicesReducer,
-    // facilities: facilitiesReducer,
-    // visits: visitsReducer,
-    // contracts: contractsReducer,
-    // alerts: alertsReducer,
-    // installations: installationsReducer,
-    // photos: photosReducer,
+    facilities: facilitiesReducer,
+    visits: visitsReducer,
+    contracts: contractsReducer,
+    alerts: alertsReducer,
+    installations: installationsReducer,
   },
   preloadedState: loadState(),
 });

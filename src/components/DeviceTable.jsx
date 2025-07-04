@@ -1,19 +1,21 @@
-import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import React from 'react'
+import React from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+
 const columns = [
-    { id: 'type', label: 'Type' },
+  { id: 'type', label: 'Type' },
   { id: 'id', label: 'ID' },
   { id: 'facility', label: 'Facility' },
   { id: 'status', label: 'Status' },
   { id: 'battery', label: 'Battery %' },
   { id: 'lastService', label: 'Last Service' },
   { id: 'amcStatus', label: 'AMC/CMC Status' },
-]
-const DeviceTable = ({ devices, onEdit, onDelete }) => {
+];
+
+function DeviceTable({ devices, onEdit, onDelete }) {
   return (
-     <TableContainer component={Paper}>
+    <TableContainer component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
@@ -46,7 +48,7 @@ const DeviceTable = ({ devices, onEdit, onDelete }) => {
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 }
 
-export default DeviceTable
+export default DeviceTable; 
