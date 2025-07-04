@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Inventory Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive web application for managing medical device inventory, installations, service logs, AMC/CMC contracts, and alerts. Built with React, Redux, and Material UI.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Device Inventory:** Track all devices, their status, battery, last service, and AMC/CMC status.
+- **Installations & Training:** Log device installations, training, and feedback with photo support.
+- **Service Visit Logs:** Record service visits, engineer notes, and attachments.
+- **AMC/CMC Tracker:** Manage contracts, track expiry, and update contract details.
+- **Alerts & Photo Logs:** Log device alerts and upload related photos.
+- **Role-based Access:** Admins can add/edit/delete; Technicians have view-only access.
+- **Responsive Design:** Works seamlessly on desktop and mobile, with a sidebar navigation and dark/light theme toggle.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend:** React 19, Redux Toolkit, React Router
+- **UI:** Material UI (MUI v7)
+- **State Management:** Redux Toolkit
+- **Styling:** CSS, Material UI sx props
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
+- Node.js (v16 or higher recommended)
+- npm
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
+   cd jagriti
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### `npm run build`
+## Usage
+- Use the sidebar to navigate between modules.
+- Switch between Admin and Technician roles using the dropdown in the AppBar.
+- Toggle dark/light mode using the icon in the AppBar.
+- On mobile, use the hamburger menu to open/close the sidebar.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Folder Structure
+```
+jagriti/
+  src/
+    components/      # Reusable UI components (tables, forms)
+    pages/           # Main app pages (DeviceInventory, Installations, etc.)
+    redux/           # Redux slices and store
+    App.js           # Main app layout and routing
+    index.js         # Entry point
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Customization
+- Update the logo in `public/logo192.png`.
+- Adjust theme and colors in `src/App.js`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is for demonstration/educational purposes.
